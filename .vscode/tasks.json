@@ -1,0 +1,37 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "create-build-dir",
+			"type": "shell",
+			"command": "mkdir -p build",
+			"windows": {
+				"command": "New-Item build -Type Directory -Force"
+			},
+		},
+		{
+			"label": "run-cmake",
+			"type": "shell",
+			"command": "cd build; cmake -GNinja ..",
+			"dependsOrder": "sequence",
+			"dependsOn": ["create-build-dir"]
+		},
+		{
+			"label": "run-ninja",
+			"type": "shell",
+			"command": "cd build; ninja",
+			"dependsOrder": "sequence",
+			"dependsOn": ["run-cmake"]
+		},
+		{
+			"label": "clean",
+			"type": "shell",
+			"command": "rm -rf build",
+			"windows": {
+				"command": "Remove-Item .\\build\\ -Recurse"
+			}
+		}
+	]
+}
