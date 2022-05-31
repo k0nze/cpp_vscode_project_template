@@ -6,7 +6,7 @@
 
 ```
 sudo apt update
-sudo apt install build-essential git cmake ninja
+sudo apt install build-essential git cmake ninja gdb
 ```
 
 ### macOS
